@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Ledger — Lightweight PHP ledger for transactions</title>
+    <meta name="description" content="PHP Ledger is a lightweight PHP library for accounts, transactions, and balances. Simple API, framework-agnostic, open-source.">
+    <meta name="author" content="PHP Ledger Contributors">
+    <meta name="keywords" content="PHP, ledger, accounting, transactions, double-entry, bookkeeping, general ledger">
+    <link rel="canonical" href="https://phpledger.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://phpledger.com/">
+    <meta property="og:title" content="PHP Ledger — Lightweight PHP ledger for transactions">
+    <meta property="og:description" content="PHP Ledger is a lightweight PHP library for accounts, transactions, and balances. Simple API, framework-agnostic, open-source.">
+    <meta property="og:image" content="/assets/img/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://phpledger.com/">
+    <meta property="twitter:title" content="PHP Ledger — Lightweight PHP ledger for transactions">
+    <meta property="twitter:description" content="PHP Ledger is a lightweight PHP library for accounts, transactions, and balances. Simple API, framework-agnostic, open-source.">
+    <meta property="twitter:image" content="/assets/img/og-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PHP Ledger",
+      "description": "Lightweight PHP ledger for transactions, accounts, and balances",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "license": "https://github.com/rmak78/phpledger/blob/master/LICENSE",
+      "sameAs": "https://github.com/rmak78/phpledger",
+      "url": "https://phpledger.com",
+      "author": {
+        "@type": "Organization",
+        "name": "PHP Ledger Contributors"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark-subtle">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-database me-2"></i>PHP Ledger
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quick-start">Quick Start</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#docs">Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/rmak78/phpledger" target="_blank">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-2">
+                    <button id="theme-toggle" class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <a href="https://github.com/rmak78/phpledger" target="_blank" class="btn btn-primary btn-sm">
+                        <i class="fas fa-star me-1"></i>Star on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100 py-5">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold mb-4">
+                            Simple Double Entry <br>
+                            <span class="text-primary">Accounting in PHP</span>
+                        </h1>
+                        <p class="lead mb-4">
+                            Simple. Intuitive. Accounting. Discover a modern bookkeeping solution 
+                            that's completely free and modern using websites: PHP files for downloading, building finance, 
+                            ERP, or analytics features.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-3 mb-4">
+                            <a href="https://github.com/rmak78/phpledger" target="_blank" class="btn btn-primary btn-lg">
+                                <i class="fab fa-github me-2"></i>View our Files
+                            </a>
+                            <a href="#quick-start" class="btn btn-outline-primary btn-lg">
+                                Get Started →
+                            </a>
+                        </div>
+                        
+                        <div class="badges-row d-flex flex-wrap gap-2 justify-content-start">
+                            <img src="https://img.shields.io/github/stars/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=10b981" alt="GitHub Stars" loading="eager">
+                            <img src="https://img.shields.io/github/forks/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=10b981" alt="GitHub Forks" loading="eager">
+                            <img src="https://img.shields.io/github/issues/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=f97316" alt="GitHub Issues" loading="eager">
+                            <img src="https://img.shields.io/github/last-commit/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=6366f1" alt="Last Commit" loading="eager">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-illustration text-center">
+                        <div class="hero-image-container">
+                            <div class="hero-book">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="floating-icons">
+                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-dollar-sign"></i>
+                                <i class="fas fa-calculator"></i>
+                                <i class="fas fa-coins"></i>
+                                <i class="fas fa-receipt"></i>
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-body-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Everything You Need for Accounting</h2>
+                    <p class="lead">Get everything for accounting in a simple toolsuite, in one main class, the developers are 
+                    new or advanced powering your next project.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h5>Double-Entry Accounting</h5>
+                        <p>Implements proper double-entry bookkeeping principles for accurate financial tracking.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h5>Framework Agnostic</h5>
+                        <p>Works with any PHP framework or can be used standalone. No heavy dependencies.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h5>MySQL Integration</h5>
+                        <p>Optimized for MySQL with efficient queries and proper database design.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5>Testable & Reliable</h5>
+                        <p>Built with testing in mind, ensuring your financial data is always accurate.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h5>Extensible</h5>
+                        <p>Modular design allows easy customization and extension for your specific needs.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h5>Lightweight</h5>
+                        <p>Minimal footprint with maximum functionality. Perfect for performance-critical applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section id="quick-start" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Get Started in Minutes</h2>
+                    <p class="lead">Simple download and start building finance-powered apps today!</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="code-block mb-4">
+                        <div class="code-header">
+                            <span>Installation</span>
+                            <button class="btn btn-sm btn-outline-secondary copy-btn" data-copy="git clone https://github.com/rmak78/phpledger.git
+cd phpledger">
+                                <i class="fas fa-clipboard"></i>
+                            </button>
+                        </div>
+                        <pre><code>git clone https://github.com/rmak78/phpledger.git
+cd phpledger</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Basic Usage</span>
+                            <button class="btn btn-sm btn-outline-secondary copy-btn" data-copy="<?php
+require_once 'config/database.php';
+require_once 'classes/Ledger.php';
+
+// Create a new ledger instance
+$ledger = new Ledger($pdo);
+
+// Create accounts
+$assets = $ledger->createAccount('Assets', 'ASSET');
+$revenue = $ledger->createAccount('Revenue', 'REVENUE');
+
+// Record a transaction
+$transaction = $ledger->createTransaction([
+    ['account_id' => $assets, 'debit' => 1000, 'credit' => 0],
+    ['account_id' => $revenue, 'debit' => 0, 'credit' => 1000]
+], 'Sale of products');
+
+echo 'Transaction recorded successfully!';
+?>">
+                                <i class="fas fa-clipboard"></i>
+                            </button>
+                        </div>
+                        <pre><code>&lt;?php
+require_once 'config/database.php';
+require_once 'classes/Ledger.php';
+
+// Create a new ledger instance
+$ledger = new Ledger($pdo);
+
+// Create accounts
+$assets = $ledger->createAccount('Assets', 'ASSET');
+$revenue = $ledger->createAccount('Revenue', 'REVENUE');
+
+// Record a transaction
+$transaction = $ledger->createTransaction([
+    ['account_id' => $assets, 'debit' => 1000, 'credit' => 0],
+    ['account_id' => $revenue, 'debit' => 0, 'credit' => 1000]
+], 'Sale of products');
+
+echo 'Transaction recorded successfully!';
+?&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Is It For Section -->
+    <section class="py-5 bg-body-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-3">Who Is It For?</h2>
+                    <p class="lead">
+                        PHP developers building finance, ERP, or analytics features who need a clear ledger model.
+                        Perfect for applications requiring accurate financial tracking and reporting.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Docs & Links Section -->
+    <section id="docs" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Documentation & Resources</h2>
+                    <p class="lead">Everything you need to get started and contribute.</p>
+                </div>
+            </div>
+            
+            <div class="row g-3 justify-content-center">
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://github.com/rmak78/phpledger#readme" target="_blank" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-book me-2"></i>README
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://github.com/rmak78/phpledger/issues" target="_blank" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-bug me-2"></i>Issues
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://github.com/rmak78/phpledger/releases" target="_blank" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-tag me-2"></i>Releases
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://github.com/rmak78/phpledger/blob/master/CONTRIBUTING.md" target="_blank" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-users me-2"></i>Contribute
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-6 mx-auto text-center">
+                    <a href="https://github.com/rmak78/phpledger/issues/new?title=Bug:%20[describe]" target="_blank" class="btn btn-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Report a Bug
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5 bg-body-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold text-center mb-5">Frequently Asked Questions</h2>
+                    
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Is it production-ready?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    PHP Ledger is actively maintained and used in production environments. However, as with any financial software, we recommend thorough testing in your specific use case before deployment.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Does it require a framework?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    No! PHP Ledger is framework-agnostic and can be used standalone or integrated with any PHP framework like Laravel, Symfony, or CodeIgniter.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    How do I persist data?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    PHP Ledger uses MySQL for data persistence. You'll need to set up the database schema and configure the connection. Sample SQL files are included in the repository.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    What's the license?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    PHP Ledger is open-source software. Please check the <a href="https://github.com/rmak78/phpledger/blob/master/LICENSE" target="_blank">LICENSE file</a> in the repository for specific licensing terms.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    How can I contribute?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We welcome contributions! Please check out our <a href="https://github.com/rmak78/phpledger" target="_blank">GitHub repository</a> for issues to work on, or submit bug reports and feature requests.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 PHP Ledger Contributors. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://github.com/rmak78/phpledger/blob/master/LICENSE" target="_blank" class="text-light text-decoration-none">
+                        License
+                    </a>
+                    <span class="mx-2">•</span>
+                    <a href="https://github.com/rmak78/phpledger" target="_blank" class="text-light text-decoration-none">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="copyToast" class="toast" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong class="me-auto">Copied!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                Code copied to clipboard successfully.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/assets/js/site.js"></script>
+</body>
+</html>
