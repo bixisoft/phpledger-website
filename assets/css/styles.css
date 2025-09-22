@@ -51,6 +51,7 @@ html {
 .navbar-brand {
     font-size: 1.5rem;
     transition: var(--transition-smooth);
+    color:black;
 }
 
 .navbar-brand:hover {
@@ -81,7 +82,7 @@ html {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
     position: relative;
     overflow: hidden;
     min-height: 100vh;
@@ -94,7 +95,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 50%, rgba(166, 235, 212, 0.911) 0%, transparent 50%);
     pointer-events: none;
 }
 

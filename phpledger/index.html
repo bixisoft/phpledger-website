@@ -61,18 +61,22 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark-subtle">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark-subtle">
+        <div class="container-fluid">
+            <!-- Left: Logo -->
+            <a class="navbar-brand fw-bold me-auto" href="#home">
                 <i class="fas fa-database me-2"></i>PHP Ledger
             </a>
-            
+
+            <!-- Toggler for mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+
+            <!-- Center + Right -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <!-- Center: Nav links -->
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#features">Features</a>
                     </li>
@@ -89,8 +93,9 @@
                         <a class="nav-link" href="#faq">FAQ</a>
                     </li>
                 </ul>
-                
-                <div class="d-flex align-items-center gap-2">
+
+                <!-- Right: Buttons -->
+                <div class="d-flex align-items-center gap-2 ms-auto">
                     <button id="theme-toggle" class="btn btn-outline-secondary btn-sm">
                         <i class="fas fa-sun"></i>
                     </button>
@@ -101,6 +106,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
