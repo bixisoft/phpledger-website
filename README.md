@@ -1,73 +1,43 @@
-# Welcome to your Lovable project
+# PHP Ledger — Website (HTML/CSS + Bootstrap + jQuery)
 
-## Project info
+Landing page for the open-source project **PHP Ledger**.  
+Live site: [https://phpledger.com](https://phpledger.com)  
+App repo: [https://github.com/rmak78/phpledger](https://github.com/rmak78/phpledger)
 
-**URL**: https://lovable.dev/projects/b9d4e7b0-35b5-49c8-b71b-4621af1eda01
+This repository contains a **fast, accessible, single-page website** built with **HTML, CSS, Bootstrap, and jQuery**.  
+It introduces **PHP Ledger**, provides quick-start snippets, links to GitHub, and shows the **Roadmap** for ongoing development.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+##  About PHP Ledger (the App)
 
-**Use Lovable**
+**PHP Ledger** is a LAMP-stack app written in **vanilla PHP** using **MeekroDB**, **jQuery**, and **Bootstrap**.  
+It implements a **double-entry accounting system** with:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b9d4e7b0-35b5-49c8-b71b-4621af1eda01) and start prompting.
+-  Chart of Accounts  
+-  Journal Entries  
+-  Trial Balance  
+-  Balance Sheet & Profit & Loss statements  
+-  Period Closing: daily, monthly, yearly  
 
-Changes made via Lovable will be committed automatically to this repo.
+###  Planned Modules
+- Accounts Receivable (AR)  
+- Accounts Payable (AP)  
+- Point of Sale (POS)  
 
-**Use your preferred IDE**
+###  Long-Term Roadmap
+- Local installs & network installs  
+- Multi-location & multi-company support  
+- Synchronization with a head-office instance  
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+👉 Contribute roadmap ideas and PRs in the **[app repo](https://github.com/rmak78/phpledger)**.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠 Website Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/b9d4e7b0-35b5-49c8-b71b-4621af1eda01) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **HTML5 + CSS3**
+- **Bootstrap 5** (UI framework)
+- **jQuery 3.x** (DOM scripting & enhancements)
+- **Shields.io** badges (stars, license, last commit)
+- **Open Graph / Twitter meta tags** (SEO & previews)

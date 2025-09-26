@@ -138,7 +138,7 @@ $(document).ready(function() {
             }
             
             [data-bs-theme="light"] .navbar.scrolled {
-                background-color: rgba(255, 255, 255, 0.95) !important;
+                background-color: rgba(0, 0, 0, 0.95) !important;
                 box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             }
         `)
