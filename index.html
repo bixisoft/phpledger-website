@@ -160,6 +160,21 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
         }
+        
+        .enterprise-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        .enterprise-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .enterprise-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -497,28 +512,69 @@
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Installation -->
                 <div class="space-y-8">
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                            <span class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
-                            Installation
-                        </h3>
-                        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-                            <div class="bg-gray-800 px-6 py-3 flex justify-between items-center">
-                                <span class="text-gray-300 text-sm font-medium">Terminal</span>
-                                <button class="copy-btn text-gray-400 hover:text-white transition-colors text-sm" data-clipboard-text="composer require phpledger/phpledger">
-                                    <i class="fas fa-copy mr-1"></i> Copy
-                                </button>
-                            </div>
-                            <div class="p-6 code-block text-sm">
-                                <span class="text-green-400">$</span>
-                                <span class="text-gray-300 ml-2">composer require phpledger/phpledger</span>
-                            </div>
-                        </div>
-                    </div>
+<div>
+    <!-- Step 0: Install Git -->
+    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+        <span class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">0</span>
+        Install Git
+    </h3>
+    <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl mb-6">
+        <div class="bg-gray-800 px-6 py-3 flex justify-between items-center">
+            <span class="text-gray-300 text-sm font-medium">Terminal</span>
+            <button class="copy-btn text-gray-400 hover:text-white transition-colors text-sm" data-clipboard-text="https://git-scm.com/downloads">
+                <i class="fas fa-copy mr-1"></i> Copy
+            </button>
+        </div>
+        <div class="p-6 code-block text-sm">
+            <span class="text-green-400">$</span>
+            <span class="text-gray-300 ml-2">Download and install Git from:</span><br>
+            <a href="https://git-scm.com/downloads" target="_blank" class="text-blue-400 hover:underline ml-6">https://git-scm.com/downloads</a>
+        </div>
+    </div>
+
+    <!-- Step 1: Clone Repository -->
+    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+        <span class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+        Installation
+    </h3>
+    <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+        <div class="bg-gray-800 px-6 py-3 flex justify-between items-center">
+            <span class="text-gray-300 text-sm font-medium">Terminal</span>
+            <button class="copy-btn text-gray-400 hover:text-white transition-colors text-sm" data-clipboard-text="git clone https://github.com/rmak78/phpledger.git">
+                <i class="fas fa-copy mr-1"></i> Copy
+            </button>
+        </div>
+        <div class="p-6 code-block text-sm">
+            <span class="text-green-400">$</span>
+            <span class="text-gray-300 ml-2">git clone https://github.com/rmak78/phpledger.git</span>
+        </div>
+    </div>
+</div>
+
+<div class="mb-10">
+  <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+    <span class="w-8 h-8 bg-yellow-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+    Install MySQL
+  </h3>
+  <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+    <div class="bg-gray-800 px-6 py-3 flex justify-between items-center">
+      <span class="text-gray-300 text-sm font-medium">Download</span>
+      <button class="copy-btn text-gray-400 hover:text-white transition-colors text-sm" data-clipboard-text="https://dev.mysql.com/downloads/">
+        <i class="fas fa-copy mr-1"></i> Copy
+      </button>
+    </div>
+    <div class="p-6 code-block text-sm">
+      <span class="text-gray-300">Download and install MySQL from:</span><br>
+      <a href="https://dev.mysql.com/downloads/" target="_blank" class="text-blue-400 hover:underline ml-6">https://dev.mysql.com/downloads/</a>
+      <div class="mt-3 text-gray-400 text-sm">After installation, start the MySQL server and open your MySQL terminal or phpMyAdmin.</div>
+    </div>
+  </div>
+</div>
+
 
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                            <span class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+                            <span class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
                             Database Setup
                         </h3>
                         <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
@@ -542,7 +598,7 @@ SOURCE schema.sql;">
                 <!-- Basic Usage -->
                 <div>
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                        <span class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+                        <span class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4</span>
                         Basic Usage
                     </h3>
                     <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
@@ -649,55 +705,101 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
     </section>
 
     <!-- Enterprise Section -->
-    <section id="enterprise" class="py-24 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-green-500 animate-pulse-glow"></div>
-        </div>
+    <section id="enterprise" class="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
+        <div class="absolute inset-0 ledger-grid-bg"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
                     Enterprise Support
                 </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                     Professional support and consulting services for mission-critical implementations
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="glass-card rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                <div class="enterprise-card bg-white dark:bg-gray-900 rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-headset text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Priority Support</h3>
-                    <p class="text-gray-300 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Priority Support</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
                         Direct access to core developers with guaranteed response times for critical issues and technical guidance.
                     </p>
+                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>24/7 emergency support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Guaranteed 2-hour response</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Direct developer access</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="glass-card rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                <div class="enterprise-card bg-white dark:bg-gray-900 rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-cogs text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Custom Development</h3>
-                    <p class="text-gray-300 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Custom Development</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
                         Tailored solutions and custom extensions to meet your specific business requirements and workflows.
                     </p>
+                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Custom module development</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Integration with existing systems</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Performance optimization</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="glass-card rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                <div class="enterprise-card bg-white dark:bg-gray-900 rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Training & Implementation</h3>
-                    <p class="text-gray-300 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Training & Implementation</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
                         Comprehensive training programs and hands-on implementation assistance for your development team.
                     </p>
+                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>On-site or remote training</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Implementation best practices</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Architecture consultation</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="text-center">
-                <a href="mailto:enterprise@phpledger.com" class="inline-flex items-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
+                <a href="mailto:enterprise@phpledger.com" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     Contact Enterprise Team
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -706,7 +808,7 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-24 bg-white dark:bg-gray-950">
+    <section id="faq" class="py-24 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
@@ -718,7 +820,7 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
             </div>
 
             <div class="space-y-6">
-                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                <div class="bg-white dark:bg-gray-950 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
                         <i class="fas fa-check-circle text-blue-600 mr-3 mt-1"></i>
                         Is PHP Ledger production-ready?
@@ -728,7 +830,7 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
                     </p>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                <div class="bg-white dark:bg-gray-950 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
                         <i class="fas fa-database text-green-600 mr-3 mt-1"></i>
                         What databases are supported?
@@ -738,7 +840,7 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
                     </p>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                <div class="bg-white dark:bg-gray-950 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
                         <i class="fas fa-cube text-purple-600 mr-3 mt-1"></i>
                         Can I use it with Laravel/Symfony?
@@ -748,7 +850,7 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
                     </p>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                <div class="bg-white dark:bg-gray-950 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
                         <i class="fas fa-chart-line text-orange-600 mr-3 mt-1"></i>
                         How do I handle financial reporting?
@@ -758,7 +860,7 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
                     </p>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                <div class="bg-white dark:bg-gray-950 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
                         <i class="fas fa-shield-alt text-red-600 mr-3 mt-1"></i>
                         What about security and compliance?
@@ -772,24 +874,22 @@ echo 'Balance: ' . $ledger->getAccountBalance($cash);
     </section>
 
     <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <div class="ledger-grid-bg w-full h-full"></div>
-        </div>
+    <section class="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
+        <div class="absolute inset-0 ledger-grid-bg"></div>
         
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">
                 Ready to Implement Professional Accounting?
             </h2>
-            <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of developers building financial applications with PHP Ledger's enterprise-grade accounting engine.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#quick-start" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
+                <a href="#quick-start" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     Get Started Now
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
-                <a href="https://github.com/rmak78/phpledger" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold text-lg hover:bg-white/10 transition-all">
+                <a href="https://github.com/rmak78/phpledger" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-semibold text-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
                     <i class="fab fa-github mr-2"></i>
                     View on GitHub
                 </a>
