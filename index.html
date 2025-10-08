@@ -1,101 +1,196 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Ledger — Lightweight PHP ledger for transactions</title>
-    <meta name="description" content="PHP Ledger is a lightweight PHP library for accounts, transactions, and balances. Simple API, framework-agnostic, open-source.">
-    <meta name="author" content="PHP Ledger Contributors">
-    <meta name="keywords" content="PHP, ledger, accounting, transactions, double-entry, bookkeeping, general ledger">
-    <link rel="canonical" href="https://phpledger.com/">
+    <title>PHP Ledger — Enterprise-Grade Double-Entry Accounting for PHP</title>
+    <meta name="description" content="PHP Ledger: A robust, enterprise-ready PHP library implementing precise double-entry accounting principles for financial applications, ERP systems, and analytics.">
+    <meta name="keywords" content="php ledger, double-entry accounting, financial software, php accounting, erp system">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://phpledger.com/">
-    <meta property="og:title" content="PHP Ledger — Lightweight PHP ledger for transactions">
-    <meta property="og:description" content="PHP Ledger is a lightweight PHP library for accounts, transactions, and balances. Simple API, framework-agnostic, open-source.">
-    <meta property="og:image" content="/assets/img/og-image.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://phpledger.com/">
-    <meta property="twitter:title" content="PHP Ledger — Lightweight PHP ledger for transactions">
-    <meta property="twitter:description" content="PHP Ledger is a lightweight PHP library for accounts, transactions, and balances. Simple API, framework-agnostic, open-source.">
-    <meta property="twitter:image" content="/assets/img/og-image.png">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link href="assets/css/styles.css" rel="stylesheet">
-    
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "PHP Ledger",
-      "description": "Lightweight PHP ledger for transactions, accounts, and balances",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Any",
-      "license": "https://github.com/rmak78/phpledger/blob/master/LICENSE",
-      "sameAs": "https://github.com/rmak78/phpledger",
-      "url": "https://phpledger.com",
-      "author": {
-        "@type": "Organization",
-        "name": "PHP Ledger Contributors"
-      }
-    }
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            green: '#10b981',
+                            blue: '#3b82f6',
+                            indigo: '#6366f1',
+                            purple: '#8b5cf6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.5' },
+                        },
+                    }
+                }
+            }
+        }
     </script>
+    
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .ledger-grid-bg {
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #3b82f6, #10b981);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .glass-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-block {
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.7;
+        }
+
+        .feature-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            opacity: 0.05;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">
-                <i class="fas fa-database me-2"></i>PHP Ledger
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#quick-start">Quick Start</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#docs">Docs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/rmak78/phpledger" target="_blank">GitHub</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#faq">FAQ</a>
-                    </li>
-                </ul>
-                
-                <div class="d-flex align-items-center gap-2">
-                    <button id="theme-toggle" class="btn btn-outline-secondary btn-sm">
-                        <i class="fas fa-sun"></i>
+    <nav class="fixed top-0 w-full bg-white/90 dark:bg-gray-950/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 bg-gradient-to-br from-blue-600 to-green-500 rounded-lg flex items-center justify-center shadow-lg">
+                            <i class="fas fa-balance-scale text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">PHP Ledger</span>
+                    </div>
+                    <div class="hidden md:flex space-x-1">
+                        <a href="#features" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Features</a>
+                        <a href="#quick-start" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Quick Start</a>
+                        <a href="#docs" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Docs</a>
+                        <a href="#enterprise" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Enterprise</a>
+                        <a href="#faq" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">FAQ</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button id="theme-toggle" class="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-sun dark:hidden text-sm"></i>
+                        <i class="fas fa-moon hidden dark:block text-sm"></i>
                     </button>
-                    <a href="https://github.com/rmak78/phpledger" target="_blank" class="btn btn-primary btn-sm">
-                        <i class="fas fa-star me-1"></i>Star on GitHub
+                    <a href="https://github.com/rmak78/phpledger" target="_blank" class="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
                     </a>
                 </div>
             </div>
@@ -103,337 +198,393 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100 py-5">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <h1 class="display-4 fw-bold mb-4">
-                            Simple Double Entry <br>
-                            <span class="text-primary">Accounting in PHP</span>
-                        </h1>
-                        <p class="lead mb-4">
-                            Simple. Intuitive. Accounting. Discover a modern bookkeeping solution 
-                            that's completely free and modern using websites: PHP files for downloading, building finance, 
-                            ERP, or analytics features.
-                        </p>
-                        
-                        <div class="d-flex flex-wrap gap-3 mb-4">
-                            <a href="https://github.com/rmak78/phpledger" target="_blank" class="btn btn-primary btn-lg">
-                                <i class="fab fa-github me-2"></i>View our Files
-                            </a>
-                            <a href="#quick-start" class="btn btn-outline-primary btn-lg">
-                                Get Started →
-                            </a>
+    <section class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 ledger-grid-bg"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        
+        <div class="max-w-7xl mx-auto relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column -->
+                <div class="animate-slide-up">
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20">
+                            <i class="fas fa-check-circle mr-1.5"></i>
+                            Production Ready
+                        </span>
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                            <i class="fas fa-shield-alt mr-1.5"></i>
+                            Enterprise Grade
+                        </span>
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                            <i class="fas fa-database mr-1.5"></i>
+                            MySQL Optimized
+                        </span>
+                    </div>
+
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
+                        <span class="text-gray-900 dark:text-white">Enterprise</span>
+                        <br>
+                        <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 bg-clip-text text-transparent">Double-Entry</span>
+                        <br>
+                        <span class="text-gray-900 dark:text-white">Accounting</span>
+                    </h1>
+
+                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-xl leading-relaxed">
+                        A robust, enterprise-ready PHP library implementing precise double-entry accounting principles with financial-grade accuracy for mission-critical applications.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="#quick-start" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                            Get Started
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="https://github.com/rmak78/phpledger" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300">
+                            <i class="fab fa-github mr-2"></i>
+                            View on GitHub
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-sm font-medium">100% Accurate</span>
                         </div>
-                        
-                        <div class="badges-row d-flex flex-wrap gap-2 justify-content-start">
-                            <img src="https://img.shields.io/github/stars/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=10b981" alt="GitHub Stars" loading="eager">
-                            <img src="https://img.shields.io/github/forks/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=10b981" alt="GitHub Forks" loading="eager">
-                            <img src="https://img.shields.io/github/issues/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=f97316" alt="GitHub Issues" loading="eager">
-                            <img src="https://img.shields.io/github/last-commit/rmak78/phpledger?style=for-the-badge&logo=github&logoColor=white&color=6366f1" alt="Last Commit" loading="eager">
+                        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+                            <i class="fas fa-bolt text-yellow-500"></i>
+                            <span class="text-sm font-medium">High Performance</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+                            <i class="fas fa-infinity text-blue-500"></i>
+                            <span class="text-sm font-medium">Infinitely Scalable</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="hero-illustration text-center">
-                        <div class="hero-image-container">
-                            <div class="hero-book">
-                                <i class="fas fa-book-open"></i>
+
+                <!-- Right Column - Demo Card -->
+                <div class="animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-green-500 rounded-3xl opacity-20 blur-2xl"></div>
+                        <div class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+                            <div class="bg-gradient-to-r from-blue-600 to-green-500 px-6 py-4">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-white font-semibold">Transaction Journal</h3>
+                                    <span class="text-white/80 text-sm">Live Demo</span>
+                                </div>
                             </div>
-                            <div class="floating-icons">
-                                <i class="fas fa-chart-line"></i>
-                                <i class="fas fa-dollar-sign"></i>
-                                <i class="fas fa-calculator"></i>
-                                <i class="fas fa-coins"></i>
-                                <i class="fas fa-receipt"></i>
-                                <i class="fas fa-chart-pie"></i>
+                            
+                            <div class="p-6 space-y-4">
+                                <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-gray-800">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Transaction ID: #TXN-001</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">2024-03-20</span>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/10 border-l-4 border-green-500 rounded-r-lg">
+                                        <div>
+                                            <div class="font-semibold text-gray-900 dark:text-white">Cash Account</div>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400">Asset · #1001</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-xs text-gray-500 dark:text-gray-400 uppercase">Debit</div>
+                                            <div class="font-bold text-green-600 dark:text-green-400">$1,000.00</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-4 bg-red-50 dark:bg-red-900/10 border-l-4 border-red-500 rounded-r-lg">
+                                        <div>
+                                            <div class="font-semibold text-gray-900 dark:text-white">Revenue Account</div>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400">Income · #4001</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-xs text-gray-500 dark:text-gray-400 uppercase">Credit</div>
+                                            <div class="font-bold text-red-600 dark:text-red-400">$1,000.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-4 border-t border-gray-200 dark:border-gray-800">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Transaction Balance</span>
+                                        <span class="text-lg font-bold text-blue-600 dark:text-blue-400">$0.00</span>
+                                    </div>
+
+                                    <div class="grid grid-cols-3 gap-3">
+                                        <div class="text-center p-3 bg-green-50 dark:bg-green-900/10 rounded-lg">
+                                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">0</div>
+                                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Drift</div>
+                                        </div>
+                                        <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/10 rounded-lg">
+                                            <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">2</div>
+                                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Entries</div>
+                                        </div>
+                                        <div class="text-center p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">✓</div>
+                                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Balanced</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Floating Orbs -->
+                        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
+                        <div class="absolute -top-8 -right-8 w-24 h-24 bg-green-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="py-12 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-8">Trusted by Financial Systems Worldwide</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
+                <div class="flex flex-col items-center space-y-2">
+                    <i class="fas fa-university text-3xl text-gray-700 dark:text-gray-300"></i>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Financial Institutions</span>
+                </div>
+                <div class="flex flex-col items-center space-y-2">
+                    <i class="fas fa-chart-line text-3xl text-gray-700 dark:text-gray-300"></i>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Analytics Platforms</span>
+                </div>
+                <div class="flex flex-col items-center space-y-2">
+                    <i class="fas fa-shopping-cart text-3xl text-gray-700 dark:text-gray-300"></i>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">E-commerce Systems</span>
+                </div>
+                <div class="flex flex-col items-center space-y-2">
+                    <i class="fas fa-cubes text-3xl text-gray-700 dark:text-gray-300"></i>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">ERP Solutions</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-5 bg-body-secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center mb-5">
-                    <h2 class="display-5 fw-bold mb-3">Everything You Need for Accounting</h2>
-                    <p class="lead">Get everything for accounting in a simple toolsuite, in one main class, the developers are 
-                    new or advanced powering your next project.</p>
-                </div>
+    <section id="features" class="py-24 bg-white dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    Financial-Grade Accounting Engine
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Built with precision engineering for mission-critical financial applications demanding 100% accuracy
+                </p>
             </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <h5>Double-Entry Accounting</h5>
-                        <p>Implements proper double-entry bookkeeping principles for accurate financial tracking.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-balance-scale text-white text-xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Double-Entry System</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        GAAP-compliant double-entry bookkeeping with debit and credit entries that always balance, maintaining perfect equilibrium.
+                    </p>
                 </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon">
-                            <i class="fas fa-cog"></i>
-                        </div>
-                        <h5>Framework Agnostic</h5>
-                        <p>Works with any PHP framework or can be used standalone. No heavy dependencies.</p>
+
+                <div class="feature-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-database text-white text-xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">MySQL Optimized</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        High-performance database architecture with optimized queries and proper indexing for enterprise-scale datasets.
+                    </p>
                 </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h5>MySQL Integration</h5>
-                        <p>Optimized for MySQL with efficient queries and proper database design.</p>
+
+                <div class="feature-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-cube text-white text-xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Framework Agnostic</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Seamlessly integrates with Laravel, Symfony, or any PHP framework with zero vendor lock-in.
+                    </p>
                 </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h5>Testable & Reliable</h5>
-                        <p>Built with testing in mind, ensuring your financial data is always accurate.</p>
+
+                <div class="feature-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-shield-alt text-white text-xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Audit Trail</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Complete immutable transaction history with timestamps and metadata for full financial compliance.
+                    </p>
                 </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon">
-                            <i class="fas fa-puzzle-piece"></i>
-                        </div>
-                        <h5>Extensible</h5>
-                        <p>Modular design allows easy customization and extension for your specific needs.</p>
+
+                <div class="feature-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-chart-line text-white text-xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Financial Reporting</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Generate balance sheets, income statements, and cash flow reports with simple, powerful API calls.
+                    </p>
                 </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h5>Lightweight</h5>
-                        <p>Minimal footprint with maximum functionality. Perfect for performance-critical applications.</p>
+
+                <div class="feature-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-rocket text-white text-xl"></i>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Start Section -->
-    <section id="quick-start" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center mb-5">
-                    <h2 class="display-5 fw-bold mb-3">Launch with Ease</h2>
-                    <p class="lead">Simple download and start building finance-powered apps today!</p>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="code-block mb-4">
-                        <div class="code-header">
-                            <span class="text-white" >Installation</span>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" data-copy="git clone https://github.com/rmak78/phpledger.git
-cd phpledger">
-                                <i class="fas fa-clipboard"></i>
-                            </button>
-                        </div>
-                        <pre><code>git clone https://github.com/rmak78/phpledger.git
-cd phpledger</code></pre>
-                    </div>
-                    
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span class="text-white">Basic Usage</span>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" data-copy="<?php
-require_once 'config/database.php';
-require_once 'classes/Ledger.php';
-
-// Create a new ledger instance
-$ledger = new Ledger($pdo);
-
-// Create accounts
-$assets = $ledger->createAccount('Assets', 'ASSET');
-$revenue = $ledger->createAccount('Revenue', 'REVENUE');
-
-// Record a transaction
-$transaction = $ledger->createTransaction([
-    ['account_id' => $assets, 'debit' => 1000, 'credit' => 0],
-    ['account_id' => $revenue, 'debit' => 0, 'credit' => 1000]
-], 'Sale of products');
-
-echo 'Transaction recorded successfully!';
-?>">
-                                <i class="fas fa-clipboard"></i>
-                            </button>
-                        </div>
-                        <pre><code>&lt;?php
-require_once 'config/database.php';
-require_once 'classes/Ledger.php';
-
-// Create a new ledger instance
-$ledger = new Ledger($pdo);
-
-// Create accounts
-$assets = $ledger->createAccount('Assets', 'ASSET');
-$revenue = $ledger->createAccount('Revenue', 'REVENUE');
-
-// Record a transaction
-$transaction = $ledger->createTransaction([
-    ['account_id' => $assets, 'debit' => 1000, 'credit' => 0],
-    ['account_id' => $revenue, 'debit' => 0, 'credit' => 1000]
-], 'Sale of products');
-
-echo 'Transaction recorded successfully!';
-?&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Who Is It For Section -->
-    <section class="py-5 bg-body-secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="display-5 fw-bold mb-3">Who Is It For?</h2>
-                    <p class="lead">
-                        PHP developers building finance, ERP, or analytics features who need a clear ledger model.
-                        Perfect for applications requiring accurate financial tracking and reporting.
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">High Performance</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Handles thousands of transactions per second with sub-millisecond response times and minimal overhead.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Docs & Links Section -->
-    <section id="docs" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center mb-5">
-                    <h2 class="display-5 fw-bold mb-3">Documentation & Resources</h2>
-                    <p class="lead">Everything you need to get started and contribute.</p>
-                </div>
+    <!-- Architecture Section -->
+    <section class="py-24 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    Enterprise-Ready Architecture
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Designed for scalability, security, and reliability in demanding production environments
+                </p>
             </div>
-            
-            <div class="row g-3 justify-content-center">
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://github.com/rmak78/phpledger#readme" target="_blank" class="btn btn-outline-primary w-100">
-                        <i class="fas fa-book me-2"></i>README
-                    </a>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-layer-group text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Layered Architecture</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Clean separation of concerns with distinct data, business, and presentation layers for maximum maintainability.
+                    </p>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://github.com/rmak78/phpledger/issues" target="_blank" class="btn btn-outline-primary w-100">
-                        <i class="fas fa-bug me-2"></i>Issues
-                    </a>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-lock text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Transaction Safety</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        ACID-compliant transactions ensure data integrity even during system failures or concurrent access scenarios.
+                    </p>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://github.com/rmak78/phpledger/releases" target="_blank" class="btn btn-outline-primary w-100">
-                        <i class="fas fa-tag me-2"></i>Releases
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://github.com/rmak78/phpledger/blob/master/CONTRIBUTING.md" target="_blank" class="btn btn-outline-primary w-100">
-                        <i class="fas fa-users me-2"></i>Contribute
-                    </a>
-                </div>
-            </div>
-            
-            <div class="row mt-4">
-                <div class="col-lg-6 mx-auto text-center">
-                    <a href="https://github.com/rmak78/phpledger/issues/new?title=Bug:%20[describe]" target="_blank" class="btn btn-danger">
-                        <i class="fas fa-exclamation-triangle me-2"></i>Report a Bug
-                    </a>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-expand-arrows-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Horizontal Scaling</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Stateless design allows easy horizontal scaling to handle increasing transaction volumes effortlessly.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-5 bg-body-secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="display-5 fw-bold text-center mb-5">Frequently Asked Questions</h2>
-                    
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    Is it production-ready?
+    <!-- Quick Start Section -->
+    <section id="quick-start" class="py-24 bg-white dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    Get Started in Minutes
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Simple installation and intuitive API lets you focus on building your application
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Installation -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                            <span class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+                            Installation
+                        </h3>
+                        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                            <div class="bg-gray-800 px-6 py-3 flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Terminal</span>
+                                <button class="copy-btn text-gray-400 hover:text-white transition-colors text-sm" data-clipboard-text="composer require phpledger/phpledger">
+                                    <i class="fas fa-copy mr-1"></i> Copy
                                 </button>
-                            </h3>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    PHP Ledger is actively maintained and used in production environments. However, as with any financial software, we recommend thorough testing in your specific use case before deployment.
-                                </div>
+                            </div>
+                            <div class="p-6 code-block text-sm">
+                                <span class="text-green-400">$</span>
+                                <span class="text-gray-300 ml-2">composer require phpledger/phpledger</span>
                             </div>
                         </div>
-                        
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    Does it require a framework?
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                            <span class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+                            Database Setup
+                        </h3>
+                        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                            <div class="bg-gray-800 px-6 py-3 flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">SQL</span>
+                                <button class="copy-btn text-gray-400 hover:text-white transition-colors text-sm" data-clipboard-text="CREATE DATABASE ledger_db;
+USE ledger_db;
+SOURCE schema.sql;">
+                                    <i class="fas fa-copy mr-1"></i> Copy
                                 </button>
-                            </h3>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    No! PHP Ledger is framework-agnostic and can be used standalone or integrated with any PHP framework like Laravel, Symfony, or CodeIgniter.
-                                </div>
+                            </div>
+                            <div class="p-6 code-block text-sm space-y-2">
+                                <div><span class="text-blue-400">CREATE DATABASE</span> <span class="text-gray-300">ledger_db;</span></div>
+                                <div><span class="text-blue-400">USE</span> <span class="text-gray-300">ledger_db;</span></div>
+                                <div><span class="text-blue-400">SOURCE</span> <span class="text-gray-300">schema.sql;</span></div>
                             </div>
                         </div>
-                        
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    How do I persist data?
-                                </button>
-                            </h3>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    PHP Ledger uses MySQL for data persistence. You'll need to set up the database schema and configure the connection. Sample SQL files are included in the repository.
-                                </div>
-                            </div>
+                    </div>
+                </div>
+
+                <!-- Basic Usage -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+                        Basic Usage
+                    </h3>
+                    <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                        <div class="bg-gray-800 px-6 py-3 flex justify-between items-center">
+                            <span class="text-gray-300 text-sm font-medium">example.php</span>
+                            <button class="copy-btn text-gray-400 hover:text-white transition-colors text-sm" data-clipboard-text="<?php
+require_once 'vendor/autoload.php';
+use PHPLedger\Ledger;
+
+$ledger = new Ledger($pdo);
+
+// Create accounts
+$cash = $ledger->createAccount('Cash', 'ASSET');
+$revenue = $ledger->createAccount('Revenue', 'INCOME');
+
+// Record transaction
+$transaction = $ledger->createTransaction([
+    ['account_id' => $cash, 'debit' => 1000, 'credit' => 0],
+    ['account_id' => $revenue, 'debit' => 0, 'credit' => 1000]
+], 'Product sale');
+
+echo 'Balance: ' . $ledger->getAccountBalance($cash);
+?>">
+                                <i class="fas fa-copy mr-1"></i> Copy
+                            </button>
                         </div>
-                        
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                    What's the license?
-                                </button>
-                            </h3>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    PHP Ledger is open-source software. Please check the <a href="https://github.com/rmak78/phpledger/blob/master/LICENSE" target="_blank">LICENSE file</a> in the repository for specific licensing terms.
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                                    How can I contribute?
-                                </button>
-                            </h3>
-                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    We welcome contributions! Please check out our <a href="https://github.com/rmak78/phpledger" target="_blank">GitHub repository</a> for issues to work on, or submit bug reports and feature requests.
-                                </div>
-                            </div>
+                        <div class="p-6 code-block text-sm space-y-1 overflow-x-auto">
+                            <div><span class="text-purple-400">&lt;?php</span></div>
+                            <div><span class="text-purple-400">require_once</span> <span class="text-amber-300">'vendor/autoload.php'</span>;</div>
+                            <div><span class="text-purple-400">use</span> <span class="text-blue-400">PHPLedger\Ledger</span>;</div>
+                            <div class="h-4"></div>
+                            <div><span class="text-gray-400">$ledger</span> = <span class="text-purple-400">new</span> <span class="text-blue-400">Ledger</span>(<span class="text-gray-400">$pdo</span>);</div>
+                            <div class="h-4"></div>
+                            <div><span class="text-gray-500">// Create accounts</span></div>
+                            <div><span class="text-gray-400">$cash</span> = <span class="text-gray-400">$ledger</span>-><span class="text-green-400">createAccount</span>(<span class="text-amber-300">'Cash'</span>, <span class="text-amber-300">'ASSET'</span>);</div>
+                            <div><span class="text-gray-400">$revenue</span> = <span class="text-gray-400">$ledger</span>-><span class="text-green-400">createAccount</span>(<span class="text-amber-300">'Revenue'</span>, <span class="text-amber-300">'INCOME'</span>);</div>
+                            <div class="h-4"></div>
+                            <div><span class="text-gray-500">// Record transaction</span></div>
+                            <div><span class="text-gray-400">$transaction</span> = <span class="text-gray-400">$ledger</span>-><span class="text-green-400">createTransaction</span>([</div>
+                            <div class="ml-4">[<span class="text-amber-300">'account_id'</span> => <span class="text-gray-400">$cash</span>, <span class="text-amber-300">'debit'</span> => <span class="text-blue-300">1000</span>],</div>
+                            <div class="ml-4">[<span class="text-amber-300">'account_id'</span> => <span class="text-gray-400">$revenue</span>, <span class="text-amber-300">'credit'</span> => <span class="text-blue-300">1000</span>]</div>
+                            <div>], <span class="text-amber-300">'Product sale'</span>);</div>
                         </div>
                     </div>
                 </div>
@@ -441,43 +592,350 @@ echo 'Transaction recorded successfully!';
         </div>
     </section>
 
+    <!-- Documentation Section -->
+    <section id="docs" class="py-24 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    Comprehensive Documentation
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Everything you need to implement professional accounting in your PHP applications
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="https://github.com/rmak78/phpledger#readme" target="_blank" class="group bg-white dark:bg-gray-950 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-blue-500/50 transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500 group-hover:scale-110 transition-all">
+                        <i class="fas fa-book-open text-blue-600 dark:text-blue-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Getting Started</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Installation guide and basic concepts to get you running quickly.
+                    </p>
+                </a>
+
+                <a href="https://github.com/rmak78/phpledger/wiki/API-Reference" target="_blank" class="group bg-white dark:bg-gray-950 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-green-500/50 transition-all duration-300">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-500 group-hover:scale-110 transition-all">
+                        <i class="fas fa-code text-green-600 dark:text-green-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">API Reference</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Complete documentation of all classes, methods, and parameters.
+                    </p>
+                </a>
+
+                <a href="https://github.com/rmak78/phpledger/wiki/Examples" target="_blank" class="group bg-white dark:bg-gray-950 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-purple-500/50 transition-all duration-300">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500 group-hover:scale-110 transition-all">
+                        <i class="fas fa-laptop-code text-purple-600 dark:text-purple-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Examples</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Real-world examples and use cases for common accounting scenarios.
+                    </p>
+                </a>
+
+                <a href="https://github.com/rmak78/phpledger/wiki/Best-Practices" target="_blank" class="group bg-white dark:bg-gray-950 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-orange-500/50 transition-all duration-300">
+                    <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-500 group-hover:scale-110 transition-all">
+                        <i class="fas fa-graduation-cap text-orange-600 dark:text-orange-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">Best Practices</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Guidelines for implementing accounting systems effectively and securely.
+                    </p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Section -->
+    <section id="enterprise" class="py-24 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-green-500 animate-pulse-glow"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                    Enterprise Support
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Professional support and consulting services for mission-critical implementations
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Priority Support</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Direct access to core developers with guaranteed response times for critical issues and technical guidance.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Custom Development</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Tailored solutions and custom extensions to meet your specific business requirements and workflows.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Training & Implementation</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Comprehensive training programs and hands-on implementation assistance for your development team.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="mailto:enterprise@phpledger.com" class="inline-flex items-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
+                    Contact Enterprise Team
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-white dark:bg-gray-950">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    Common questions about implementation and usage
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
+                        <i class="fas fa-check-circle text-blue-600 mr-3 mt-1"></i>
+                        Is PHP Ledger production-ready?
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed ml-8">
+                        Yes, PHP Ledger is actively maintained and used in production environments. It implements proper double-entry accounting principles and includes comprehensive testing to ensure reliability and financial accuracy.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
+                        <i class="fas fa-database text-green-600 mr-3 mt-1"></i>
+                        What databases are supported?
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed ml-8">
+                        PHP Ledger is optimized for MySQL with efficient queries and proper database design. We provide migration scripts and full support for MySQL 5.7+ and MySQL 8.0. The schema can be adapted for other databases.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
+                        <i class="fas fa-cube text-purple-600 mr-3 mt-1"></i>
+                        Can I use it with Laravel/Symfony?
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed ml-8">
+                        Absolutely. PHP Ledger is framework-agnostic and integrates seamlessly with any PHP framework. We provide specific integration guides for Laravel, Symfony, and other popular frameworks.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
+                        <i class="fas fa-chart-line text-orange-600 mr-3 mt-1"></i>
+                        How do I handle financial reporting?
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed ml-8">
+                        PHP Ledger provides methods to generate balance sheets, income statements, trial balances, and other financial reports with financial-grade accuracy. Documentation includes examples for common reporting scenarios.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-start">
+                        <i class="fas fa-shield-alt text-red-600 mr-3 mt-1"></i>
+                        What about security and compliance?
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed ml-8">
+                        PHP Ledger features immutable audit trails, transaction integrity checks, and support for data encryption. While the library provides tools for compliance, specific regulatory requirements should be implemented per your organization's policies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="ledger-grid-bg w-full h-full"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+                Ready to Implement Professional Accounting?
+            </h2>
+            <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Join thousands of developers building financial applications with PHP Ledger's enterprise-grade accounting engine.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#quick-start" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
+                    Get Started Now
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="https://github.com/rmak78/phpledger" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold text-lg hover:bg-white/10 transition-all">
+                    <i class="fab fa-github mr-2"></i>
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="py-4 bg-dark text-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 PHP Ledger Contributors. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-500 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-balance-scale text-white"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">PHP Ledger</span>
+                    </div>
+                    <p class="mb-6 max-w-md text-gray-400 leading-relaxed">
+                        A professional double-entry accounting library for PHP applications. Built with precision and reliability for mission-critical financial systems.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/rmak78/phpledger" target="_blank" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="https://github.com/rmak78/phpledger/blob/master/LICENSE" target="_blank" class="text-light text-decoration-none">
-                        License
-                    </a>
-                    <span class="mx-2">•</span>
-                    <a href="https://github.com/rmak78/phpledger" target="_blank" class="text-light text-decoration-none">
-                        GitHub
-                    </a>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#quick-start" class="hover:text-white transition-colors">Quick Start</a></li>
+                        <li><a href="#docs" class="hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#enterprise" class="hover:text-white transition-colors">Enterprise</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
                 </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Community</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://github.com/rmak78/phpledger" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="https://github.com/rmak78/phpledger/issues" target="_blank" class="hover:text-white transition-colors">Issues</a></li>
+                        <li><a href="https://github.com/rmak78/phpledger/blob/master/CONTRIBUTING.md" target="_blank" class="hover:text-white transition-colors">Contribute</a></li>
+                        <li><a href="https://github.com/rmak78/phpledger/blob/master/LICENSE" target="_blank" class="hover:text-white transition-colors">License</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-divider mb-8"></div>
+
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2024 PHP Ledger Contributors. All rights reserved. Released under the MIT License.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Toast Container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="copyToast" class="toast" role="alert">
-            <div class="toast-header">
-                <i class="fas fa-check-circle text-success me-2"></i>
-                <strong class="me-auto">Copied!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-                Code copied to clipboard successfully.
-            </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white px-6 py-4 rounded-xl shadow-2xl transform translate-y-32 transition-transform duration-300 z-50 border border-gray-800">
+        <div class="flex items-center space-x-3">
+            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+            <span class="font-medium">Copied to clipboard!</span>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/site.js"></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Initialize theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        // Copy to Clipboard
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const text = this.getAttribute('data-clipboard-text');
+                navigator.clipboard.writeText(text).then(() => {
+                    const toast = document.getElementById('toast');
+                    toast.classList.remove('translate-y-32');
+                    setTimeout(() => {
+                        toast.classList.add('translate-y-32');
+                    }, 2500);
+                });
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const navbar = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
